@@ -33,3 +33,35 @@ footer {
     justify-content: flex-end;
     background-color: var(--footer-background);
 }
+
+#button-one {
+    display: flex;
+}
+
+#button-two {
+    display: flex;
+}
+
+#button-three {
+    display: flex;
+}
+
+#cup-one {
+    display: flex;
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+
+#cup-two {
+    display: flex;
+}
+
+#cup-three {
+    display: flex;
+}
+
+#results-element {
+    display:flex;
+    color: black;
+}
