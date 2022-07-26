@@ -1,23 +1,62 @@
-:root {
-    --background: rgb(224, 234, 247);
-    --header-background: white;
-    --footer-background: rgb(243, 242, 242);
+#gray-cup-guy::after {
+    src: url('./assets/graycupguy.png')    
+}
+
+html {
+    font-size: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #957e96;
+    box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
-    font-family: 'Rubik', san-serif;
-    background: var(--background);
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    background-color:rgb(189, 159, 137);
+    width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+    border: 5px solid rgb(87, 70, 85);
 }
 
 header {
     position: sticky;
     top: 0;
     display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: var(--header-background);
+    background-color:aquamarine;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    color:bisque;
+    margin: 0;
+    padding: 20px 0;
+    text-shadow: 3px 3px 1px black;
+}
+
+main {
+    display: block;
+}
+
+.cups-and-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    background-color: white;
+}
+
+.three-cups {
+    display: flex;
+    padding: 0px;    
+}
+
+.three-buttons {
+    display: flex;
+    justify-content: right;
+    align-items: bottom;
+    flex-direction: row;    
 }
 
 main {
@@ -46,19 +85,11 @@ footer {
     display: flex;
 }
 
-#cup-one {
+#graycup {
     display: flex;
     position: relative;
     top: 50%;
     left: 50%;
-}
-
-#cup-two {
-    display: flex;
-}
-
-#cup-three {
-    display: flex;
 }
 
 #results-element {
