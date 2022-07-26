@@ -12,44 +12,46 @@
         href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/global.css" />
-    <title>Web App</title>
+    <title>cups</title>
 </head>
-
 <body>
     <header>
-        <img src="/assets/html_css_js.png">
-        <h1>Web App</h1>
+        <h1>which cup is hiding something?</h1>
     </header>
 
     <main>
-        <section class="cups-buttons">
+        <section class="cups-and-buttons">
             <div>
-                <img id="cup-one" src="/assets/cup-one.png" alt="upside-down cup">
-                <button id="button-one">
+                <img id="cup-one" class="three-cups" src="./assets/graycup.jpg" alt="gray cup">
+                <button id="button-one" class="three-buttons">
                     Guess
                 </button>
             </div>
             <div>
-                <img id="cup-two" src="/assets/cup-two.png" alt="upside-down cup two">
-                <button id="button-two">
+                <img id="cup-two" class="three-cups" src="./assets/graycup.jpg" alt="gray cup">
+                <button id="button-two" class="three-buttons">
                     Guess
                 </button>
             </div>
             <div>
-                <img id="cup-three" src="/assets/cup-three.png" alt="upside-down cup three">
-                <button id="button-three">
+                <img id="cup-three" class="three-cups" src="./assets/graycup.jpg" alt="gray cup">
+                <button id="button-three" class="three-buttons">
                     Guess
                 </button>
-            </div>
-            <div>
-                <img id="correct-cup" src="/assets/correct-cup.png" alt="the correct upside-down cup">
             </div>
         </section>
         <section>
-            <div id="results-element">Correct guesses: 0 | Incorrect guesses: 0</div>
-            <button id="reset-button">reset</button>
+            <div id="results-element">
+                Correct guesses: <span id="correct-guesses-number">0</span> Incorrect guesses: <span id="incorrect-guesses-number">0</span>
+            </div>
+            <div id="total-results">
+                Total games played: <span id="total-results-number">0</span>
+            </div>
+            <button id="reset-button" type="reset" value="reset">reset</button>
         </section>
-        
+        <!-- <div>
+            <img id="gray-cup-guy" src="/assets/graycupguy.png" alt="the correct guess">
+        </div> -->
     </main>
 
     <footer>&copy;2022 Software Developer</footer>

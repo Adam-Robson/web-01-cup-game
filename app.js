@@ -1,60 +1,61 @@
 // import functions and grab DOM elements
-const buttonOne = document.getElementById('button-one');
-const buttonTwo = document.getElementById('button-two');
-const buttonThree = document.getElementById('button-three');
-const cupImgOne = document.getElementById('cup-one');
-const cupImgTwo = document.getElementById('cup-one');
-const cupImgThree = document.getElementById('cup-one');
-const resultsEl = document.getElementById('results-element');
+const buttonOneEl = document.getElementById('button-one');
+const buttonTwoEl = document.getElementById('button-two');
+const buttonThreeEl = document.getElementById('button-three');
+const cupOneEl = document.getElementById('cup-one');
+const cupTwoEl = document.getElementById('cup-two');
+const cupThreeEl = document.getElementById('cup-three');
 const resetButtonEl = document.getElementById('reset-button');
-
-// let state
+const resultsEl = document.getElementById('results-element');
+const totalResultsEl = document.getElementById('total-results');
 
 let correctGuesses = 0;
 let incorrectGuesses = 0;
-const cupImages = [cupImgOne, cupImgTwo, cupImgThree];
-
-// set event listeners 
-  // get user input
-  // use user input to update state
-  // update DOM to reflect the new state
-
-buttonOne.addEventListener('click', () => {
-    handleGuess(0);
-});
-  
-buttonTwo.addEventListener('click', () => {
-    handleGuess(1);
-});
-
-buttonThree.addEventListener('click', () => {
-    handleGuess(2);
-});
-
-resetButtonEl.addEventListener('click', () => {
-    cupImgOne.src = 'assets/cup-one.png';
-    cupImgTwo.src = 'assets/cup-one.png';
-    cupImgThree.src = 'assets/cup-one.png';
-
-    buttonOne.disabled = false;
-    buttonTwo.disabled = false;
-    buttonThree.disabled = false;
-});
-
+let totalResults = 0;
+const cupImages = [cupOneEl, cupTwoEl, cupThreeEl];
 
 function handleGuess(userGuess) {
     const randomIndex = Math.floor(Math.random() * cupImages.length);
     const randomCupImage = cupImages[randomIndex];
-    randomCupImage.src = 'assets/correct-cup.png';
+    randomCupImage.src = './assets/graycupguy.png';
     if (randomIndex === userGuess) {
         correctGuesses++;
+        totalResults++;
     } else {
         incorrectGuesses++;
+        totalResults++;
     }
 
     resultsEl.textContent = `Correct guesses: ${correctGuesses} | Incorrect guesses: ${incorrectGuesses}`;
+    totalResultsEl.textContent = `Total games played: ${totalResults}`;
 
-    buttonOne.disabled = true;
-    buttonTwo.disabled = true;
-    buttonThree.disabled = true;
+    buttonOneEl.disabled = true;
+    buttonTwoEl.disabled = true;
+    buttonThreeEl.disabled = true;
 }
+// set event listeners 
+buttonOneEl.addEventListener('click', () => {
+    handleGuess(0);
+});
+
+buttonTwoEl.addEventListener('click', () => {
+    handleGuess(1);
+});
+
+buttonThreeEl.addEventListener('click', () => {
+    handleGuess(2);
+});
+
+resetButtonEl.addEventListener('click', () => {
+    cupOneEl.src = 'assets/graycup.jpg';
+    cupTwoEl.src = 'assets/graycup.jpg';
+    cupThreeEl.src = 'assets/graycup.jpg';
+
+    buttonOneEl.disabled = false;
+    buttonTwoEl.disabled = false;
+    buttonThreeEl.disabled = false;
+});
+// get user input
+// use user input to update state
+// update DOM to reflect the new state
+
