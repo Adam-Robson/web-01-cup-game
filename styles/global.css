@@ -1,6 +1,5 @@
 #gray-cup-guy::after {
-    src: url('./assets/graycupguy.png')
-    
+    src: url('./assets/graycupguy.png')    
 }
 
 html {
@@ -38,7 +37,6 @@ h1 {
 
 main {
     display: block;
-    
 }
 
 .cups-and-buttons {
@@ -47,7 +45,6 @@ main {
     align-items: center;
     margin-top: 60px;
     background-color: white;
-    
 }
 
 .three-cups {
@@ -59,9 +56,7 @@ main {
     display: flex;
     justify-content: right;
     align-items: bottom;
-    flex-direction: row;
-    
-    
+    flex-direction: row;    
 }
 
 main {
