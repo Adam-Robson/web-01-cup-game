@@ -9,7 +9,7 @@ const resetButtonEl = document.getElementById('reset-button');
 let correctGuessesEl = document.getElementById('correct-guesses-number');
 let totalResultsEl = document.getElementById('total-results-number');
 let incorrectGuessesEl = document.getElementById('incorrect-guesses-number');
-
+const startOverBtn = document.getElementById('start-over');
 let correctGuesses = 0;
 let incorrectGuesses = 0;
 let totalResults = 0;
@@ -31,7 +31,11 @@ function handleGuess(userGuess) {
     incorrectGuessesEl.textContent = incorrectGuesses;
     totalResultsEl.textContent = totalResults;
 }
-
+function activateCupButtons() {
+    buttonOneEl.disabled = false;
+    buttonTwoEl.disabled = false;
+    buttonThreeEl.disabled = false;
+}
 function resetStyles() {
     cupOneEl.src = './assets/graycup.jpg';
     cupTwoEl.src = './assets/graycup.jpg';
@@ -55,9 +59,15 @@ buttonThreeEl.addEventListener('click', () => {
 
 resetButtonEl.addEventListener('click', () => {
     resetStyles();
-    buttonOneEl.disabled = false;
-    buttonTwoEl.disabled = false;
-    buttonThreeEl.disabled = false;
+    activateCupButtons();
+
+});
+startOverBtn.addEventListener('click', () => {
+    resetStyles();
+    activateCupButtons();
+    totalResultsEl.textContent = 0;
+    correctGuessesEl.textContent = 0;
+    incorrectGuesses.textContent = 0;
 
 });
 // get user input
