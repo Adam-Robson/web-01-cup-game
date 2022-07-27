@@ -6,15 +6,17 @@ const cupOneEl = document.getElementById('cup-one');
 const cupTwoEl = document.getElementById('cup-two');
 const cupThreeEl = document.getElementById('cup-three');
 const resetButtonEl = document.getElementById('reset-button');
-const resultsEl = document.getElementById('results-element');
-const totalResultsEl = document.getElementById('total-results');
-
+let correctGuessesEl = document.getElementById('correct-guesses-number');
+let totalResultsEl = document.getElementById('total-results-number');
+let incorrectGuessesEl = document.getElementById('incorrect-guesses-number');
+const startOverBtn = document.getElementById('start-over');
 let correctGuesses = 0;
 let incorrectGuesses = 0;
 let totalResults = 0;
 const cupImages = [cupOneEl, cupTwoEl, cupThreeEl];
 
 function handleGuess(userGuess) {
+    resetStyles();
     const randomIndex = Math.floor(Math.random() * cupImages.length);
     const randomCupImage = cupImages[randomIndex];
     randomCupImage.src = './assets/graycupguy.png';
@@ -25,10 +27,19 @@ function handleGuess(userGuess) {
         incorrectGuesses++;
         totalResults++;
     }
-
-    resultsEl.textContent = `Correct guesses: ${correctGuesses} | Incorrect guesses: ${incorrectGuesses}`;
-    totalResultsEl.textContent = `Total games played: ${totalResults}`;
-
+    correctGuessesEl.textContent = correctGuesses;
+    incorrectGuessesEl.textContent = incorrectGuesses;
+    totalResultsEl.textContent = totalResults;
+}
+function activateCupButtons() {
+    buttonOneEl.disabled = false;
+    buttonTwoEl.disabled = false;
+    buttonThreeEl.disabled = false;
+}
+function resetStyles() {
+    cupOneEl.src = './assets/graycup.jpg';
+    cupTwoEl.src = './assets/graycup.jpg';
+    cupThreeEl.src = './assets/graycup.jpg';
     buttonOneEl.disabled = true;
     buttonTwoEl.disabled = true;
     buttonThreeEl.disabled = true;
@@ -47,13 +58,17 @@ buttonThreeEl.addEventListener('click', () => {
 });
 
 resetButtonEl.addEventListener('click', () => {
-    cupOneEl.src = 'assets/graycup.jpg';
-    cupTwoEl.src = 'assets/graycup.jpg';
-    cupThreeEl.src = 'assets/graycup.jpg';
+    resetStyles();
+    activateCupButtons();
 
-    buttonOneEl.disabled = false;
-    buttonTwoEl.disabled = false;
-    buttonThreeEl.disabled = false;
+});
+startOverBtn.addEventListener('click', () => {
+    resetStyles();
+    activateCupButtons();
+    totalResultsEl.textContent = 0;
+    correctGuessesEl.textContent = 0;
+    incorrectGuesses.textContent = 0;
+
 });
 // get user input
 // use user input to update state

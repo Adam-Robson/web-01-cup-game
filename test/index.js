@@ -1,5 +1,5 @@
 // include jsdom for DOM use in tests on travis
-import jsdom from 'jsdom';
+const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 const { window } = new JSDOM(``, {
     url: 'http://localhost:5500'
@@ -12,6 +12,5 @@ global.sessionStorage = window.sessionStorage;
 global.URLSearchParams = window.URLSearchParams;
 global.URL = window.URL;
 
-// eslint-disable-next-line no-global-assign
 require = require('esm')(module);
-export * from './tests.js';
+module.exports = require('./tests.js');
