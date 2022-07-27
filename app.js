@@ -67,8 +67,7 @@ startOverBtn.addEventListener('click', () => {
     activateCupButtons();
     totalResultsEl.textContent = 0;
     correctGuessesEl.textContent = 0;
-    incorrectGuesses.textContent = 0;
-
+    incorrectGuessesEl.textContent = 0;
 });
 // get user input
 // use user input to update state
