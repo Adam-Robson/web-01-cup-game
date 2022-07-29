@@ -15,10 +15,11 @@ let incorrectGuesses = 0;
 let totalResults = 0;
 const cupImages = [cupOneEl, cupTwoEl, cupThreeEl];
 
-function handleGuess(userGuess) {
+function handleGuess(userGuess, answer) {
     resetStyles();
-    const randomIndex = Math.floor(Math.random() * cupImages.length);
-    const randomCupImage = cupImages[randomIndex];
+    let randomIndex = Math.floor(Math.random() * cupImages.length);
+    randomIndex = answer;
+    const randomCupImage = cupImages[answer];
     randomCupImage.src = './assets/graycupguy.png';
     if (randomIndex === userGuess) {
         correctGuesses++;
@@ -44,7 +45,7 @@ function resetStyles() {
     buttonTwoEl.disabled = true;
     buttonThreeEl.disabled = true;
 }
-// set event listeners 
+// set event listeners
 buttonOneEl.addEventListener('click', () => {
     handleGuess(0);
 });
@@ -65,9 +66,9 @@ resetButtonEl.addEventListener('click', () => {
 startOverBtn.addEventListener('click', () => {
     resetStyles();
     activateCupButtons();
-    totalResultsEl.textContent = 0;
-    correctGuessesEl.textContent = 0;
-    incorrectGuessesEl.textContent = 0;
+    totalResultsEl.value = 0;
+    correctGuessesEl.value = 0;
+    incorrectGuessesEl.value = 0;
 });
 // get user input
 // use user input to update state
