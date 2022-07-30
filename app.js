@@ -1,4 +1,3 @@
-// import functions and grab DOM elements
 const buttonOneEl = document.getElementById('button-one');
 const buttonTwoEl = document.getElementById('button-two');
 const buttonThreeEl = document.getElementById('button-three');
@@ -6,46 +5,15 @@ const cupOneEl = document.getElementById('cup-one');
 const cupTwoEl = document.getElementById('cup-two');
 const cupThreeEl = document.getElementById('cup-three');
 const resetButtonEl = document.getElementById('reset-button');
-let correctGuessesEl = document.getElementById('correct-guesses-number');
-let totalResultsEl = document.getElementById('total-results-number');
-let incorrectGuessesEl = document.getElementById('incorrect-guesses-number');
 const startOverBtn = document.getElementById('start-over');
-let correctGuesses = 0;
-let incorrectGuesses = 0;
-let totalResults = 0;
+
+let correctGuesses = document.getElementById('correct-guesses');
+let totalGuesses = document.getElementById('total-guesses');
+let incorrectGuesses = document.getElementById('incorrect-guesses');
+
 const cupImages = [cupOneEl, cupTwoEl, cupThreeEl];
 
-function handleGuess(userGuess, answer) {
-    resetStyles();
-    let randomIndex = Math.floor(Math.random() * cupImages.length);
-    randomIndex = answer;
-    const randomCupImage = cupImages[answer];
-    randomCupImage.src = './assets/graycupguy.png';
-    if (randomIndex === userGuess) {
-        correctGuesses++;
-        totalResults++;
-    } else {
-        incorrectGuesses++;
-        totalResults++;
-    }
-    correctGuessesEl.textContent = correctGuesses;
-    incorrectGuessesEl.textContent = incorrectGuesses;
-    totalResultsEl.textContent = totalResults;
-}
-function activateCupButtons() {
-    buttonOneEl.disabled = false;
-    buttonTwoEl.disabled = false;
-    buttonThreeEl.disabled = false;
-}
-function resetStyles() {
-    cupOneEl.src = './assets/graycup.jpg';
-    cupTwoEl.src = './assets/graycup.jpg';
-    cupThreeEl.src = './assets/graycup.jpg';
-    buttonOneEl.disabled = true;
-    buttonTwoEl.disabled = true;
-    buttonThreeEl.disabled = true;
-}
-// set event listeners
+
 buttonOneEl.addEventListener('click', () => {
     handleGuess(0);
 });
@@ -59,18 +27,55 @@ buttonThreeEl.addEventListener('click', () => {
 });
 
 resetButtonEl.addEventListener('click', () => {
-    resetStyles();
-    activateCupButtons();
-
+    cupOneEl.src = 'assets/graycup.png';
+    cupTwoEl.src = 'assets/graycup.png';
+    cupThreeEl.src = 'assets/graycup.png';
+    buttonOneEl.disabled = false;
+    buttonTwoEl.disabled = false;
+    buttonThreeEl.disabled = false;
 });
+
 startOverBtn.addEventListener('click', () => {
-    resetStyles();
-    activateCupButtons();
-    totalResultsEl.value = 0;
-    correctGuessesEl.value = 0;
-    incorrectGuessesEl.value = 0;
+    cupOneEl.src = 'assets/graycup.png';
+    cupTwoEl.src = 'assets/graycup.png';
+    cupThreeEl.src = 'assets/graycup.png';
+    buttonOneEl.disabled = false;
+    buttonTwoEl.disabled = false;
+    buttonThreeEl.disabled = false;
+    correctGuesses.textContent = 0;
+    incorrectGuesses.textContent = 0;
+    totalGuesses.textContent = 0;
 });
-// get user input
-// use user input to update state
-// update DOM to reflect the new state
 
+let correctGuess = 0;
+let incorrectGuess = 0;
+let totalGuess = 0;
+
+function handleGuess(userGuess) {
+    resetStyles();
+    const randomIndex = Math.floor(Math.random() * cupImages.length);
+    cupImages[randomIndex].src = './assets/graycupguy.png';
+    if (userGuess === randomIndex) {
+        correctGuess++;
+        totalGuess++;
+    } else {
+        incorrectGuess++;
+        totalGuess++;
+    }
+    correctGuesses.textContent = correctGuess;
+    incorrectGuesses.textContent = incorrectGuess;
+    totalGuesses.textContent = totalGuess;
+
+    buttonOneEl.disabled = true;
+    buttonTwoEl.disabled = true;
+    buttonThreeEl.disabled = true;
+}
+
+function resetStyles() {
+    cupOneEl.src = './assets/graycup.png';
+    cupTwoEl.src = './assets/graycup.png';
+    cupThreeEl.src = './assets/graycup.png';
+    buttonOneEl.disabled = false;
+    buttonTwoEl.disabled = false;
+    buttonThreeEl.disabled = false;
+}

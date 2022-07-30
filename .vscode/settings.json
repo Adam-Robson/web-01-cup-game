@@ -3,5 +3,12 @@
     "liveServer.settings.port": 5501,
     "cSpell.words": [
         "graycupguy"
-    ]
+    ],
+    "files.autoSave": "afterDelay",
+    "editor.fontSize": 10,
+    "editor.cursorStyle": "block-outline",
+    "editor.wordWrap": "on",
+    "workbench.editor.enablePreview": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
 }
