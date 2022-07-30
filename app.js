@@ -1,6 +1,6 @@
-const buttonOneEl = document.getElementById('button-one');
-const buttonTwoEl = document.getElementById('button-two');
-const buttonThreeEl = document.getElementById('button-three');
+const buttonOne = document.getElementById('button-one');
+const buttonTwo = document.getElementById('button-two');
+const buttonThree = document.getElementById('button-three');
 const cupOneEl = document.getElementById('cup-one');
 const cupTwoEl = document.getElementById('cup-two');
 const cupThreeEl = document.getElementById('cup-three');
@@ -12,17 +12,21 @@ let totalGuesses = document.getElementById('total-guesses');
 let incorrectGuesses = document.getElementById('incorrect-guesses');
 
 const cupImages = [cupOneEl, cupTwoEl, cupThreeEl];
+let buttons = [buttonOne, buttonTwo, buttonThree];
 
+let correctGuess = 0;
+let incorrectGuess = 0;
+let totalGuess = 0;
 
-buttonOneEl.addEventListener('click', () => {
+buttonOne.addEventListener('click', () => {
     handleGuess(0);
 });
 
-buttonTwoEl.addEventListener('click', () => {
+buttonTwo.addEventListener('click', () => {
     handleGuess(1);
 });
 
-buttonThreeEl.addEventListener('click', () => {
+buttonThree.addEventListener('click', () => {
     handleGuess(2);
 });
 
@@ -30,52 +34,54 @@ resetButtonEl.addEventListener('click', () => {
     cupOneEl.src = 'assets/graycup.png';
     cupTwoEl.src = 'assets/graycup.png';
     cupThreeEl.src = 'assets/graycup.png';
-    buttonOneEl.disabled = false;
-    buttonTwoEl.disabled = false;
-    buttonThreeEl.disabled = false;
+    buttonOne.disabled = false;
+    buttonTwo.disabled = false;
+    buttonThree.disabled = false;
 });
 
 startOverBtn.addEventListener('click', () => {
     cupOneEl.src = 'assets/graycup.png';
     cupTwoEl.src = 'assets/graycup.png';
     cupThreeEl.src = 'assets/graycup.png';
-    buttonOneEl.disabled = false;
-    buttonTwoEl.disabled = false;
-    buttonThreeEl.disabled = false;
+    buttonOne.disabled = false;
+    buttonTwo.disabled = false;
+    buttonThree.disabled = false;
     correctGuesses.textContent = 0;
     incorrectGuesses.textContent = 0;
     totalGuesses.textContent = 0;
 });
 
-let correctGuess = 0;
-let incorrectGuess = 0;
-let totalGuess = 0;
 
-function handleGuess(userGuess) {
+// finally sank in
+function getRandomItem(buttons) {
+    return buttons[Math.floor(Math.random() * buttons.length)];
+}
+
+
+
+function handleGuess(userGuess, rightAnswer) {
     resetStyles();
     const randomIndex = Math.floor(Math.random() * cupImages.length);
     cupImages[randomIndex].src = './assets/graycupguy.png';
-    if (userGuess === randomIndex) {
+    rightAnswer = getRandomItem(buttons);
+    if (userGuess === rightAnswer) {
         correctGuess++;
+        correctGuesses.textContent = correctGuess;
         totalGuess++;
+        totalGuesses.textContent = totalGuess;
     } else {
         incorrectGuess++;
+        incorrectGuesses.textContent = incorrectGuess;
         totalGuess++;
+        totalGuesses.textContent = totalGuess;
     }
-    correctGuesses.textContent = correctGuess;
-    incorrectGuesses.textContent = incorrectGuess;
-    totalGuesses.textContent = totalGuess;
-
-    buttonOneEl.disabled = true;
-    buttonTwoEl.disabled = true;
-    buttonThreeEl.disabled = true;
 }
 
 function resetStyles() {
     cupOneEl.src = './assets/graycup.png';
     cupTwoEl.src = './assets/graycup.png';
     cupThreeEl.src = './assets/graycup.png';
-    buttonOneEl.disabled = false;
-    buttonTwoEl.disabled = false;
-    buttonThreeEl.disabled = false;
+    buttonOne.disabled = false;
+    buttonTwo.disabled = false;
+    buttonThree.disabled = false;
 }
