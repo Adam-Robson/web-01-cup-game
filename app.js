@@ -1,75 +1,82 @@
-// import functions and grab DOM elements
-const buttonOneEl = document.getElementById('button-one');
-const buttonTwoEl = document.getElementById('button-two');
-const buttonThreeEl = document.getElementById('button-three');
+const buttonOne = document.getElementById('button-one');
+const buttonTwo = document.getElementById('button-two');
+const buttonThree = document.getElementById('button-three');
 const cupOneEl = document.getElementById('cup-one');
 const cupTwoEl = document.getElementById('cup-two');
 const cupThreeEl = document.getElementById('cup-three');
 const resetButtonEl = document.getElementById('reset-button');
-let correctGuessesEl = document.getElementById('correct-guesses-number');
-let totalResultsEl = document.getElementById('total-results-number');
-let incorrectGuessesEl = document.getElementById('incorrect-guesses-number');
 const startOverBtn = document.getElementById('start-over');
-let correctGuesses = 0;
-let incorrectGuesses = 0;
-let totalResults = 0;
+let correctGuesses = document.getElementById('correct-guesses');
+let totalGuesses = document.getElementById('total-guesses');
+let incorrectGuesses = document.getElementById('incorrect-guesses');
+
 const cupImages = [cupOneEl, cupTwoEl, cupThreeEl];
 
-function handleGuess(userGuess) {
-    resetStyles();
-    const randomIndex = Math.floor(Math.random() * cupImages.length);
-    const randomCupImage = cupImages[randomIndex];
-    randomCupImage.src = './assets/graycupguy.png';
-    if (randomIndex === userGuess) {
-        correctGuesses++;
-        totalResults++;
+let correctGuess = 0;
+let incorrectGuess = 0;
+let totalGuess = 0;
+
+function resetCups() {
+    cupOneEl.src = './assets/graycup.png';
+    cupTwoEl.src = './assets/graycup.png';
+    cupThreeEl.src = './assets/graycup.png';
+}
+
+function getRandomCup() {
+    const answer = Math.floor(Math.random() * 3);
+    return answer;
+}
+
+function handleGuess(userGuess, rightAnswer) {
+    resetCups();
+    getRandomCup();
+    cupImages[rightAnswer].src = './assets/graycupguy.png';
+    if (userGuess === rightAnswer) {
+        correctGuess++;
+        totalGuess++;
+        correctGuesses.textContent = correctGuess;
+        totalGuesses.textContent = totalGuess;
     } else {
-        incorrectGuesses++;
-        totalResults++;
+        incorrectGuess++;
+        totalGuess++;
+        incorrectGuesses.textContent = incorrectGuess;
+        totalGuesses.textContent = totalGuess;
     }
-    correctGuessesEl.textContent = correctGuesses;
-    incorrectGuessesEl.textContent = incorrectGuesses;
-    totalResultsEl.textContent = totalResults;
-}
-function activateCupButtons() {
-    buttonOneEl.disabled = false;
-    buttonTwoEl.disabled = false;
-    buttonThreeEl.disabled = false;
-}
-function resetStyles() {
-    cupOneEl.src = './assets/graycup.jpg';
-    cupTwoEl.src = './assets/graycup.jpg';
-    cupThreeEl.src = './assets/graycup.jpg';
-    buttonOneEl.disabled = true;
-    buttonTwoEl.disabled = true;
-    buttonThreeEl.disabled = true;
-}
-// set event listeners 
-buttonOneEl.addEventListener('click', () => {
-    handleGuess(0);
-});
+    buttonOne.disabled = true;
+    buttonTwo.disabled = true;
+    buttonThree.disabled = true;
 
-buttonTwoEl.addEventListener('click', () => {
-    handleGuess(1);
-});
+}
 
-buttonThreeEl.addEventListener('click', () => {
-    handleGuess(2);
-});
+buttonOne.addEventListener('click', () => {
+    handleGuess(0, getRandomCup());
+}),
+
+buttonTwo.addEventListener('click', () => {
+    handleGuess(1, getRandomCup());
+}),
+
+buttonThree.addEventListener('click', () => {
+    handleGuess(2, getRandomCup());
+}),
 
 resetButtonEl.addEventListener('click', () => {
-    resetStyles();
-    activateCupButtons();
-
+    cupOneEl.src = 'assets/graycup.png';
+    cupTwoEl.src = 'assets/graycup.png';
+    cupThreeEl.src = 'assets/graycup.png';
+    buttonOne.disabled = false;
+    buttonTwo.disabled = false;
+    buttonThree.disabled = false;
 });
+
 startOverBtn.addEventListener('click', () => {
-    resetStyles();
-    activateCupButtons();
-    totalResultsEl.textContent = 0;
-    correctGuessesEl.textContent = 0;
-    incorrectGuessesEl.textContent = 0;
+    cupOneEl.src = 'assets/graycup.png';
+    cupTwoEl.src = 'assets/graycup.png';
+    cupThreeEl.src = 'assets/graycup.png';
+    buttonOne.disabled = false;
+    buttonTwo.disabled = false;
+    buttonThree.disabled = false;
+    correctGuesses.textContent = 0;
+    incorrectGuesses.textContent = 0;
+    totalGuesses.textContent = 0;
 });
-// get user input
-// use user input to update state
-// update DOM to reflect the new state
-

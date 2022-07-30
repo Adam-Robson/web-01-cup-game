@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
@@ -21,19 +20,19 @@
     <main>
         <section class="cups-and-buttons">
             <div>
-                <img id="cup-one" class="three-cups" src="./assets/graycup.jpg" alt="gray cup">
+                <img id="cup-one" class="three-cups" src="assets/graycup.png" alt="gray cup">
                 <button id="button-one" class="three-buttons">
                     cup 1
                 </button>
             </div>
             <div>
-                <img id="cup-two" class="three-cups" src="./assets/graycup.jpg" alt="gray cup">
+                <img id="cup-two" class="three-cups" src="assets/graycup.png" alt="gray cup">
                 <button id="button-two" class="three-buttons">
                     cup 2
                 </button>
             </div>
             <div>
-                <img id="cup-three" class="three-cups" src="./assets/graycup.jpg" alt="gray cup">
+                <img id="cup-three" class="three-cups" src="assets/graycup.png" alt="gray cup">
                 <button id="button-three" class="three-buttons">
                     cup 3
                 </button>
@@ -41,20 +40,17 @@
         </section>
         <section>
             <div class="guesses">
-                Correct guesses:<span id="correct-guesses-number"> 0 </span> 
+                Correct guesses:<span id="correct-guesses"></span>
             </div>
             <div class="guesses">
-                Incorrect guesses:<span id="incorrect-guesses-number"> 0 </span>
+                Incorrect guesses: <span id="incorrect-guesses"></span>
             </div>
-            <div id="total-results" class="guesses">
-                Total guesses:<span id="total-results-number"> 0 </span>
+            <div class="guesses">
+                Total guesses:<span id="total-guesses"></span>
             </div>
-            <button id="reset-button" type="reset" value="reset">reset</button>
-            <button id="start-over" type="reset" value="reset">start over</button>
+            <button id="reset-button" type="button">reset</button>
+            <button id="start-over" type="button">start over</button>
         </section>
-        <!-- <div>
-            <img id="gray-cup-guy" src="/assets/graycupguy.png" alt="the correct guess">
-        </div> -->
     </main>
 
     <footer>&copy;2022 Software Developer</footer>
