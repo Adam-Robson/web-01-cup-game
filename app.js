@@ -1,3 +1,4 @@
+// IMPORT DOM ELS 
 const buttonOne = document.getElementById('button-one');
 const buttonTwo = document.getElementById('button-two');
 const buttonThree = document.getElementById('button-three');
@@ -10,11 +11,47 @@ let correctGuesses = document.getElementById('correct-guesses');
 let totalGuesses = document.getElementById('total-guesses');
 let incorrectGuesses = document.getElementById('incorrect-guesses');
 
+// STATE
 const cupImages = [cupOneEl, cupTwoEl, cupThreeEl];
 
 let correctGuess = 0;
 let incorrectGuess = 0;
 let totalGuess = 0;
+
+// EVENT LISTENERS
+buttonOne.addEventListener('click', () => {
+    handleGuess(0, getRandomItem());
+}),
+
+buttonTwo.addEventListener('click', () => {
+    handleGuess(1, getRandomItem());
+}),
+
+buttonThree.addEventListener('click', () => {
+    handleGuess(2, getRandomItem());
+}),
+
+resetButtonEl.addEventListener('click', () => {
+    cupOneEl.src = 'assets/graycup.png';
+    cupTwoEl.src = 'assets/graycup.png';
+    cupThreeEl.src = 'assets/graycup.png';
+    enableCupButtons();
+});
+
+startOverBtn.addEventListener('click', () => {
+    correctGuess = 0;
+        incorrectGuess = 0;
+            totalGuess = 0;
+    cupOneEl.src = 'assets/graycup.png';
+    cupTwoEl.src = 'assets/graycup.png';
+    cupThreeEl.src = 'assets/graycup.png';
+    enableCupButtons();
+    correctGuesses.textContent = 0;
+    incorrectGuesses.textContent = 0;
+    totalGuesses.textContent = 0;
+});
+
+// FUNCTIONS
 
 function resetCups() {
     cupOneEl.src = './assets/graycup.png';
@@ -22,61 +59,44 @@ function resetCups() {
     cupThreeEl.src = './assets/graycup.png';
 }
 
-function getRandomCup() {
-    const answer = Math.floor(Math.random() * 3);
-    return answer;
+function getRandomItem() {
+    const correctSpot = Math.floor(Math.random() * 3);
+    return correctSpot;
 }
 
-function handleGuess(userGuess, rightAnswer) {
+function handleGuess(userGuess, correctSpot) {
+    // resets the style
     resetCups();
-    getRandomCup();
-    cupImages[rightAnswer].src = './assets/graycupguy.png';
-    if (userGuess === rightAnswer) {
+    getRandomItem();
+    if (userGuess === correctSpot) {
         correctGuess++;
         totalGuess++;
         correctGuesses.textContent = correctGuess;
         totalGuesses.textContent = totalGuess;
+        incorrectGuesses.textContent = incorrectGuess;
     } else {
         incorrectGuess++;
         totalGuess++;
+        correctGuesses.textContent = correctGuess;
         incorrectGuesses.textContent = incorrectGuess;
         totalGuesses.textContent = totalGuess;
     }
+    cupImages[correctSpot].src = './assets/graycupguy.png';
     buttonOne.disabled = true;
     buttonTwo.disabled = true;
     buttonThree.disabled = true;
-
 }
 
-buttonOne.addEventListener('click', () => {
-    handleGuess(0, getRandomCup());
-}),
+//I REALIZE I SHOULD HAVE TOGGLED THIS SOLUTION BUT I SKIPPED IT
 
-buttonTwo.addEventListener('click', () => {
-    handleGuess(1, getRandomCup());
-}),
+function disableCupButtons() {
+    buttonOne.disabled = true;
+    buttonTwo.disabled = true;
+    buttonThree.disabled = true;
+}
 
-buttonThree.addEventListener('click', () => {
-    handleGuess(2, getRandomCup());
-}),
-
-resetButtonEl.addEventListener('click', () => {
-    cupOneEl.src = 'assets/graycup.png';
-    cupTwoEl.src = 'assets/graycup.png';
-    cupThreeEl.src = 'assets/graycup.png';
+function enableCupButtons() {
     buttonOne.disabled = false;
     buttonTwo.disabled = false;
     buttonThree.disabled = false;
-});
-
-startOverBtn.addEventListener('click', () => {
-    cupOneEl.src = 'assets/graycup.png';
-    cupTwoEl.src = 'assets/graycup.png';
-    cupThreeEl.src = 'assets/graycup.png';
-    buttonOne.disabled = false;
-    buttonTwo.disabled = false;
-    buttonThree.disabled = false;
-    correctGuesses.textContent = 0;
-    incorrectGuesses.textContent = 0;
-    totalGuesses.textContent = 0;
-});
+};
