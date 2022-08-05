@@ -59,12 +59,12 @@ function resetCups() {
     cupThreeEl.src = './assets/graycup.png';
 }
 
-export function getRandomItem() {
+function getRandomItem() {
     const correctSpot = Math.floor(Math.random() * 3);
     return correctSpot;
 }
 
-export function handleGuess(userGuess, correctSpot) {
+function handleGuess(userGuess, correctSpot) {
     // resets the style
     resetCups();
     getRandomItem();
@@ -89,13 +89,13 @@ export function handleGuess(userGuess, correctSpot) {
 
 //I REALIZE I SHOULD HAVE TOGGLED THIS SOLUTION BUT I SKIPPED IT
 
-export function disableCupButtons() {
+function disableCupButtons() {
     buttonOne.disabled = true;
     buttonTwo.disabled = true;
     buttonThree.disabled = true;
 }
 
-export function enableCupButtons() {
+function enableCupButtons() {
     buttonOne.disabled = false;
     buttonTwo.disabled = false;
     buttonThree.disabled = false;
