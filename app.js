@@ -40,8 +40,8 @@ resetButtonEl.addEventListener('click', () => {
 
 startOverBtn.addEventListener('click', () => {
     correctGuess = 0;
-        incorrectGuess = 0;
-            totalGuess = 0;
+    incorrectGuess = 0;
+    totalGuess = 0;
     cupOneEl.src = 'assets/graycup.png';
     cupTwoEl.src = 'assets/graycup.png';
     cupThreeEl.src = 'assets/graycup.png';
@@ -82,12 +82,10 @@ function handleGuess(userGuess, correctSpot) {
         totalGuesses.textContent = totalGuess;
     }
     cupImages[correctSpot].src = './assets/graycupguy.png';
-    buttonOne.disabled = true;
-    buttonTwo.disabled = true;
-    buttonThree.disabled = true;
+    disableCupButtons();
 }
 
-//I REALIZE I SHOULD HAVE TOGGLED THIS SOLUTION BUT I SKIPPED IT
+
 
 function disableCupButtons() {
     buttonOne.disabled = true;
@@ -99,4 +97,4 @@ function enableCupButtons() {
     buttonOne.disabled = false;
     buttonTwo.disabled = false;
     buttonThree.disabled = false;
-};
+}
